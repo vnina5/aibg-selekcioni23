@@ -1,0 +1,18 @@
+
+
+------- /login
+Tim sa username-om: user3 i password-om: user3 se uspešno ulogovao.
+
+------- /join
+{"a":65,"b":19,"c":16,"d":52,"e":7}
+
+------- /myResult
+Tim je poslao rezultat: 3333
+User{username='user3', password='user3', result=3333, trueResult=4119, success=false, assignment=Assignment{a=65, b=19, c=16, d=52, e=7}}
+Tim nije poslao tacan rezultat.
+
+------- /login
+Tim sa username-om: user3 i password-om: use ne postoji.
+
+------- /join
+{"a":44,"b":98,"c":35,"d":7,"e":76}

@@ -1,0 +1,12 @@
+
+/login -------
+Tim sa username-om: user1 i password-om: user1 se uspešno ulogovao.
+
+/join -------
+{"a":51,"b":64,"c":86,"d":31,"e":87}
+
+/join -------
+{"a":82,"b":70,"c":33,"d":48,"e":51}
+
+/myResult -------
+User{username='user1', password='user1', result=555, trueResult=6258, success=false, assignment=Assignment{a=82, b=70, c=33, d=48, e=51}}
