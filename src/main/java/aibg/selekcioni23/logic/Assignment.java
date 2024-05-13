@@ -11,6 +11,15 @@ public class Assignment {
 //    private double result;
 //    private String ass;
 
+    public Assignment() {}
+
+    public Assignment(int a, int b, int c, int d, int e) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.e = e;
+    }
 
     @Override
     public String toString() {

@@ -12,4 +12,9 @@ public class LoginRequestDTO extends DTO {
     private String username;
     @NotNull
     private String password;
+
+    public LoginRequestDTO(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
 }

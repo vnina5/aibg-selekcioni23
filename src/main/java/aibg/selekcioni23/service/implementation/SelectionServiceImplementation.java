@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @Service
@@ -26,8 +25,7 @@ import java.util.Objects;
 public class SelectionServiceImplementation implements SelectionService {
     private Logger LOG = LoggerFactory.getLogger(SelectionServiceImplementation.class);
     private List<User> users = new ArrayList<>();
-    private LogicClass lc = new LogicClass();
-
+    private LogicClass logicClass = new LogicClass();
 
     private TokenService tokenService;
 
@@ -56,15 +54,14 @@ public class SelectionServiceImplementation implements SelectionService {
                     bw.append("Token nije uspešno generisan.");
                     bw.close();
 
+                    LOG.info("Token nije uspešno generisan.");
                     return new ErrorResponseDTO("Token nije uspešno generisan.");
                 }
 
                 LOG.info("Tim sa username-om: " + dto.getUsername() + " i password-om: " + dto.getPassword() + " se uspešno ulogovao.");
-
                 bw.newLine();
                 bw.append("Tim sa username-om: ").append(dto.getUsername()).append(" i password-om: ").append(dto.getPassword()).append(" se uspešno ulogovao.");
                 bw.close();
-
                 return new LoginResponseDTO(token);
 
 //                try {
@@ -83,13 +80,12 @@ public class SelectionServiceImplementation implements SelectionService {
         }
 
         LOG.info("Tim sa username-om: " + dto.getUsername() + " i password-om: " + dto.getPassword() + " ne postoji.");
-
         bw.newLine();
         bw.append("Tim sa username-om: ").append(dto.getUsername()).append(" i password-om: ").append(dto.getPassword()).append(" ne postoji.");
         bw.close();
-
         return new ErrorResponseDTO("Tim sa username-om: " + dto.getUsername() + " i password-om: " + dto.getPassword() + " ne postoji.");
     }
+
 
     @Override
     public DTO join(String token) throws IOException {
@@ -109,12 +105,7 @@ public class SelectionServiceImplementation implements SelectionService {
             return new ErrorResponseDTO("Token nije parsiran kako treba.");
         }
 
-        User user = null;
-        for (User u : users) {
-            if (u.getUsername().equals(claims.get("username"))) {
-                user = u;
-            }
-        }
+        User user = findUser(claims);
 
         if (user == null) {
             LOG.info("Tim ne postoji.");
@@ -130,7 +121,7 @@ public class SelectionServiceImplementation implements SelectionService {
         //pravi novi JoinResponse sa tim stringom i vraca
 
 //        String assignment = "{a:5, b:7, c:2}";
-        String assignment = lc.getAss(user);
+        String assignment = logicClass.getAss(user);
 
         if (assignment == null) {
             LOG.info("Nije generisan zadatak.");
@@ -141,13 +132,12 @@ public class SelectionServiceImplementation implements SelectionService {
         }
 
         LOG.info("Timu sa usermane-om " + claims.get("username") + " je uspesno poslat zadatak");
-
         bw.newLine();
         bw.append(assignment);
         bw.close();
-
         return new JoinResponseDTO(assignment);
     }
+
 
     @Override
     public DTO result(ResultRequestDTO dto, String token) throws IOException {
@@ -166,12 +156,7 @@ public class SelectionServiceImplementation implements SelectionService {
             return new ErrorResponseDTO("Token nije parsiran kako treba.");
         }
 
-        User user = null;
-        for (User u : users) {
-            if (u.getUsername().equals(claims.get("username"))) {
-                user = u;
-            }
-        }
+        User user = findUser(claims);
 
         if (user == null) {
             LOG.info("Tim ne postoji.");
@@ -191,7 +176,7 @@ public class SelectionServiceImplementation implements SelectionService {
         bw.newLine();
         bw.append("Tim je poslao rezultat: ").append(String.valueOf(dto.getResult()));
 
-        lc.calculateTrueResult(user);
+        logicClass.calculateTrueResult(user);
 
         bw.newLine();
         bw.append(user.toString());
@@ -202,18 +187,29 @@ public class SelectionServiceImplementation implements SelectionService {
             bw.append("Tim nije poslao tacan rezultat.");
             bw.close();
 
-            return new ResultResponseDTO("Hvala Vam što ste se prijavili za AIBG i što ste uradili selekcioni zadatak! Očekujte rezultate selekcije u narednih nekoliko dana");
+        } else {
+            LOG.info("Tim je poslao tacan rezultat.");
+            bw.newLine();
+            bw.append("Tim je poslao tacan rezultat.");
+            bw.close();
         }
-
-        LOG.info("Tim je poslao tacan rezultat.");
-        bw.newLine();
-        bw.append("Tim je poslao tacan rezultat.");
-        bw.close();
 
         String message = "Hvala Vam što ste se prijavili za AIBG i što ste uradili selekcioni zadatak! Očekujte rezultate selekcije u narednih nekoliko dana";
         return new ResultResponseDTO(message);
 
     }
+
+
+    public User findUser(Claims claims) {
+        User user = null;
+        for (User u : users) {
+            if (u.getUsername().equals(claims.get("username"))) {
+                user = u;
+            }
+        }
+        return user;
+    }
+
 
 
 }
