@@ -110,3 +110,25 @@ Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
 
 ------- /login
 Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /login
+Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /join
+{"a":29,"b":98,"c":88,"d":33,"e":52}
+
+------- /myResult
+Tim je poslao rezultat: 554
+User{username='admin', password='admin', result=554, trueResult=-3501, success=false, assignment=Assignment{a=29, b=98, c=88, d=33, e=52}}
+Tim nije poslao tacan rezultat.
+
+------- /login
+Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /join
+{"a":56,"b":21,"c":53,"d":3,"e":89}
+
+------- /myResult
+Tim je poslao rezultat: 554
+User{username='admin', password='admin', result=554, trueResult=-2489, success=false, assignment=Assignment{a=56, b=21, c=53, d=3, e=89}}
+Tim nije poslao tacan rezultat.
