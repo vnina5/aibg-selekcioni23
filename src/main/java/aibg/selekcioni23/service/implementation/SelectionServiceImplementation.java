@@ -40,6 +40,8 @@ public class SelectionServiceImplementation implements SelectionService {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
         bw.newLine();bw.newLine();
         bw.append("------- /login");
+        LOG.info("LOGIN SERVICE");
+
 
         for (User user : users) {
             if (user.getUsername().equals(dto.getUsername()) && user.getPassword().equals(dto.getPassword())) {

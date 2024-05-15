@@ -8,6 +8,7 @@ import lombok.Setter;
 public class ErrorResponseDTO extends DTO {
     private String message;
 
+    public  ErrorResponseDTO(){}
     public ErrorResponseDTO(String message) {
         this.message = message;
     }

@@ -33,15 +33,15 @@ public class SelectionController {
 //        return ResponseEntity.status(HttpStatus.ACCEPTED).body(selectionService.login(dto));
 
         DTO response = selectionService.login(dto);
-//        LOG.info(response.toString());
 
         if (response instanceof LoginResponseDTO) {
             LOG.info("login response");
-//            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+//            return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
         } else {
             LOG.info("error response");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
 
@@ -64,7 +64,7 @@ public class SelectionController {
         if (response instanceof ResultResponseDTO) {
             return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
         } else {
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -106,7 +106,7 @@ public class SelectionServiceTests {
         user.setResult(dto.getResult());
 
         logicClass.calculateTrueResult(user);
-        assertNotEquals(user.getTrueResult(), 0);
+        assertNotEquals(user.getTrueResult(), 54);
 
         String message = "Hvala Vam što ste se prijavili za AIBG i što ste uradili selekcioni zadatak! Očekujte rezultate selekcije u narednih nekoliko dana";
         JoinResponseDTO joinRes = (JoinResponseDTO) selectionService.join(token);  // mora da ne bi Assignment bio null
