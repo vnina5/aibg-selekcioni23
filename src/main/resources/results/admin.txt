@@ -132,3 +132,54 @@ Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
 Tim je poslao rezultat: 554
 User{username='admin', password='admin', result=554, trueResult=-2489, success=false, assignment=Assignment{a=56, b=21, c=53, d=3, e=89}}
 Tim nije poslao tacan rezultat.
+
+------- /join
+{"a":90,"b":64,"c":92,"d":81,"e":78}
+
+------- /join
+{"a":89,"b":18,"c":100,"d":58,"e":70}
+
+------- /join
+{"a":67,"b":29,"c":23,"d":22,"e":69}
+
+------- /join
+{"a":12,"b":93,"c":44,"d":99,"e":93}
+
+------- /join
+{"a":72,"b":82,"c":27,"d":47,"e":46}
+
+------- /join
+{"a":42,"b":45,"c":3,"d":24,"e":19}
+
+------- /join
+{"a":20,"b":14,"c":3,"d":59,"e":59}
+
+------- /join
+{"a":38,"b":20,"c":77,"d":84,"e":89}
+
+------- /join
+{"a":62,"b":76,"c":97,"d":45,"e":48}
+
+------- /join
+{a=97, b=53, c=48, d=38, e=73}
+
+------- /join
+{a=26, b=84, c=69, d=88, e=2}
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=4921, success=false, assignment={a=26, b=84, c=69, d=88, e=2}}
+Tim nije poslao tacan rezultat.
+
+------- /join
+{a=53, b=15, c=60, d=90, e=53}
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=2573, success=false, assignment={a=53, b=15, c=60, d=90, e=53}}
+Tim nije poslao tacan rezultat.
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=763, success=false, assignment={a=64, b=5, c=25, d=20, e=8}}
+Tim nije poslao tacan rezultat.

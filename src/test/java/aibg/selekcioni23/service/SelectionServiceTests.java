@@ -1,5 +1,6 @@
 package aibg.selekcioni23.service;
 
+import aibg.selekcioni23.controller.SelectionControllerTests;
 import aibg.selekcioni23.domain.User;
 import aibg.selekcioni23.dto.*;
 import aibg.selekcioni23.logic.Assignment;
@@ -7,6 +8,8 @@ import aibg.selekcioni23.logic.LogicClass;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class SelectionServiceTests {
+    private Logger LOG = LoggerFactory.getLogger(SelectionControllerTests.class);
 
     @Autowired
     private SelectionService selectionService;
@@ -75,19 +79,18 @@ public class SelectionServiceTests {
         claims.put("username", "admin");
         claims.put("password", "admin");
 
-        User user = new User("admin", "admin");
-
         when(tokenService.parseToken(token)).thenReturn(claims);
-//        when(selectionService.findUser(claims)).thenReturn(user);
-//        when(logicClass.getAss(user)).thenReturn(ass);
+        User user = selectionService.findUser(claims);
 
-//        String assignment = logicClass.getAss(user);
-//        assertNotNull(assignment);
-//        assertNotNull(user.getAssignment());
+//        when(selectionService.findUser(claims)).thenReturn(user);
+//        when(logicClass.getAss(user)).thenReturn(user.getAssignment().toString());
 
         JoinResponseDTO resActual = (JoinResponseDTO) selectionService.join(token);
+        LOG.info(resActual.getAssignment());
+        LOG.info(user.getAssignment().toString());
+
         assertNotNull(resActual);
-//        assertEquals(resActual.getAssignment(), logicClass.getAss(user));
+        assertEquals(resActual.getAssignment(), user.getAssignment().toString());
     }
 
 
@@ -101,15 +104,15 @@ public class SelectionServiceTests {
         claims.put("password", "admin");
         when(tokenService.parseToken(token)).thenReturn(claims);
 
-        User user = new User("admin", "admin");
+        User user = selectionService.findUser(claims);
         user.setAssignment(new Assignment(64, 5, 25,20,8));
         user.setResult(dto.getResult());
+//        user.setTrueResult(763);
 
         logicClass.calculateTrueResult(user);
-        assertNotEquals(user.getTrueResult(), 54);
+        assertEquals(user.getTrueResult(), 763);
 
         String message = "Hvala Vam što ste se prijavili za AIBG i što ste uradili selekcioni zadatak! Očekujte rezultate selekcije u narednih nekoliko dana";
-        JoinResponseDTO joinRes = (JoinResponseDTO) selectionService.join(token);  // mora da ne bi Assignment bio null
         ResultResponseDTO resActual = (ResultResponseDTO) selectionService.result(dto, token);
 
         assertNotNull(resActual);
