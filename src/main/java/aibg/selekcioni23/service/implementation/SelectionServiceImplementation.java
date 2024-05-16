@@ -125,19 +125,19 @@ public class SelectionServiceImplementation implements SelectionService {
 //        String assignment = "{a:5, b:7, c:2}";
         String assignment = logicClass.getAss(user);
 
-        if (assignment == null) {
+        if (user.getAssignment() == null) {
             LOG.info("Nije generisan zadatak.");
             bw.newLine();
-            bw.append("Token nije parsiran kako treba.");
+            bw.append("Nije generisan zadatak.");
             bw.close();
             return new ErrorResponseDTO("Nije generisan zadatak.");
         }
 
         LOG.info("Timu sa usermane-om " + claims.get("username") + " je uspesno poslat zadatak");
         bw.newLine();
-        bw.append(assignment);
+        bw.append(user.getAssignment().toString());
         bw.close();
-        return new JoinResponseDTO(assignment);
+        return new JoinResponseDTO(user.getAssignment().toString());
     }
 
 
