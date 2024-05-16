@@ -183,3 +183,36 @@ Tim nije poslao tacan rezultat.
 Tim je poslao rezultat: 747
 User{username='admin', password='admin', result=747, trueResult=763, success=false, assignment={a=64, b=5, c=25, d=20, e=8}}
 Tim nije poslao tacan rezultat.
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=763, success=false, assignment={a=64, b=5, c=25, d=20, e=8}}
+Tim nije poslao tacan rezultat.
+
+------- /login
+Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /join
+{a=48, b=39, c=65, d=24, e=26}
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=763, success=false, assignment={a=64, b=5, c=25, d=20, e=8}}
+Tim nije poslao tacan rezultat.
+
+------- /login
+Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /join
+{a=91, b=43, c=66, d=34, e=12}
+
+------- /myResult
+Tim je poslao rezultat: 747
+User{username='admin', password='admin', result=747, trueResult=763, success=false, assignment={a=64, b=5, c=25, d=20, e=8}}
+Tim nije poslao tacan rezultat.
+
+------- /login
+Tim sa username-om: admin i password-om: admin se uspešno ulogovao.
+
+------- /join
+{a=100, b=13, c=36, d=32, e=5}

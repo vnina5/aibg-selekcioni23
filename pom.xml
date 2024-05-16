@@ -157,7 +157,10 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<sonar.host.url>http://localhost:9000</sonar.host.url> <!-- URL SonarQube servera -->
+				<sonar.login>sqp_16822f9c1cf0e49d7974ac68ff2d00053183ed13</sonar.login> <!-- Token za autentifikaciju -->
+				<sonar.projectKey>aibg-selection-sonar</sonar.projectKey> <!-- Ključ projekta u SonarQube -->
+				<sonar.projectName>aibg-selection-sonar</sonar.projectName> <!-- Ime projekta u SonarQube -->
 			</properties>
 		</profile>
 	</profiles>
