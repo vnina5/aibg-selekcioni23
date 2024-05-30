@@ -1,14 +1,29 @@
-package aibg.selekcioni23.logic;
+package aibg.selekcioni23.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @Setter
+@Entity
+@Table(name = "tbl_assignment")
 public class Assignment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotEmpty
     private int a, b, c, d, e;
-//    private double result;
+
+    private int trueResult;
 //    private String ass;
 
     public Assignment() {}

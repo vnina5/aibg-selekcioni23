@@ -1,6 +1,7 @@
 package aibg.selekcioni23.logic;
 
 
+import aibg.selekcioni23.domain.Assignment;
 import aibg.selekcioni23.domain.User;
 import org.junit.jupiter.api.Test;
 

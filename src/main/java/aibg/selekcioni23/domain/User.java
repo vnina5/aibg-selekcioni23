@@ -1,20 +1,30 @@
 package aibg.selekcioni23.domain;
 
-import aibg.selekcioni23.logic.Assignment;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = "tbl_user")
 public class User {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotEmpty
     private String username;
+
+    @NotEmpty
     private String password;
+
     private int result;
     private int trueResult;
     private boolean success;

@@ -3,7 +3,7 @@ package aibg.selekcioni23.service;
 import aibg.selekcioni23.controller.SelectionControllerTests;
 import aibg.selekcioni23.domain.User;
 import aibg.selekcioni23.dto.*;
-import aibg.selekcioni23.logic.Assignment;
+import aibg.selekcioni23.domain.Assignment;
 import aibg.selekcioni23.logic.LogicClass;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;

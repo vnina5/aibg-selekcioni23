@@ -1,5 +1,6 @@
 package aibg.selekcioni23.logic;
 
+import aibg.selekcioni23.domain.Assignment;
 import aibg.selekcioni23.domain.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
